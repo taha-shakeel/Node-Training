@@ -1,0 +1,24 @@
+{
+  "name": "node-training",
+  "version": "1.0.0",
+  "description": "Venture dive training sessions for node js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taha-shakeel/Node-Training.git"
+  },
+  "keywords": [
+    "Node",
+    "Javascript",
+    "Express"
+  ],
+  "author": "Taha Shakeel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taha-shakeel/Node-Training/issues"
+  },
+  "homepage": "https://github.com/taha-shakeel/Node-Training#readme"
+}
