@@ -1,8 +1,8 @@
-const tasks = require('../models/tasks.model');
+const users = require('../models/users.model');
 const { states, stateHirarchy } = require('../constants/taskStates');
 
 async function findAll() {
-  return await tasks.findAll({});
+  return await users.findAll({});
 }
 
 async function find(searchBy = {}) {
@@ -23,42 +23,39 @@ async function find(searchBy = {}) {
   // if (!task.length) {
   //   throw new Error('task not found');
   // }
-  return await tasks.findAll({
+  return await users.findAll({
     where: searchBy
   });
 }
 
 function findOne(name) {
-  const task = tasks.find(u => u.name === name);
-  if (!task.length) {
+  const user = users.find(u => u.name === name);
+  if (!user.length) {
     throw new Error('task not found');
   }
-  return task;
+  return user;
 }
 
-async function insert(task) {
-  return await tasks.build(task).save();
+async function insert(user) {
+  return await users.build(user).save();
 }
 
-function update(task) {
-  const index = tasks.findIndex(u => u.id == task.id);
-  if (task === -1) throw new Error('ID_NOT_FOUND');
+function update(user) {
+  const index = users.findIndex(u => u.id == user.id);
+  if (user === -1) throw new Error('ID_NOT_FOUND');
 
-  _validateState(tasks[index].state, task.state);
+  users[index].name = user.name;
+  users[index].age = user.age;
+  users[index].dob = user.dob;
 
-  tasks[index].title = task.title;
-  tasks[index].details = task.details;
-  tasks[index].dueDate = task.dueDate;
-  tasks[index].state = task.state;
-
-  return tasks[index];
+  return users[index];
 }
 
 function deleteById(id) {
-  const delIdx = tasks.findIndex(u => u.id == id);
+  const delIdx = users.findIndex(u => u.id == id);
   if (delIdx === -1) throw new Error('ID_NOT_FOUND');
-  tasks.splice(delIdx, 1);
-  return tasks;
+  users.splice(delIdx, 1);
+  return users;
 }
 
 function _validateState(previousState, newState) {
