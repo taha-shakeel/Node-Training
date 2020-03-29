@@ -1,1 +1,0 @@
-module.exports.logger = function(data) { console.log(data); }
