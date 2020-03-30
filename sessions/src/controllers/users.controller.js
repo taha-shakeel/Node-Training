@@ -1,4 +1,5 @@
 const service = require('../service/users.service');
+const emailService = require('../service/email.service');
 
 async function getRecord(req, res) {
   const isEmpty = obj => Object.keys(obj).length <= 0;
@@ -39,9 +40,15 @@ function deleteRecord(req, res) {
   }
 }
 
+function uploadProfilePicture(req, res) {
+  res.send("ok");
+  emailService.sendProfilePictureUploadEmail();
+}
+
 module.exports = {
   getRecord,
   postRecord,
   deleteRecord,
-  putRecord
+  putRecord,
+  uploadProfilePicture
 };
